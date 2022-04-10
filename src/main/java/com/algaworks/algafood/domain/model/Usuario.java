@@ -1,5 +1,6 @@
 package com.algaworks.algafood.domain.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +13,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Permissao {
+public class Usuario {
 
 	@EqualsAndHashCode.Include
 	@Id
@@ -29,6 +32,16 @@ public class Permissao {
 	private String nome;
 
 	@Column(nullable = false)
-	private String descricao;
+	private String email;
 
+	@Column(nullable = false)
+	private String senha;
+
+	@CreationTimestamp
+	@Column(nullable = false, columnDefinition = "datetime")
+	private LocalDateTime dataCadastro;
+
+	@ManyToMany
+	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+	private List<Grupo> grupos = new ArrayList<>();
 }

@@ -1,6 +1,4 @@
-create table cozinha(
-	id SERIAL,
-	nome varchar(60) not null,
-	
-	primary key(id)
-)
+CREATE TABLE cozinha(
+   id SERIAL NOT NULL PRIMARY KEY ,
+   nome VARCHAR NOT NULL
+);

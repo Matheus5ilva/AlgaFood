@@ -43,7 +43,7 @@ public class Restaurante {
 	private BigDecimal taxaFrete;
 
 	//@JsonIgnoreProperties("hibernateLazyInitializer")
-	@ManyToOne//(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "cozinha_id", nullable = false)
 	private Cozinha cozinha;
 
